@@ -8,20 +8,12 @@ function start() {
         port,
         env
     } = appConfig;
-    createNewConnection(db)
-        .authenticate()
-        .then(() => {
-            console.log('Connection has been established successfully.');
-            application.listen(port, (err) => {
-                if (err) {
-                    throw new Error(err);
-                }
-                console.log(`Running App on port ${port} in ${env} mode`);
-            });
-        })
-        .catch((err) => {
-            console.error('Unable to connect to the database:', err);
-        });
+    application.listen(port, (err) => {
+        if (err) {
+            throw new Error(err);
+        }
+        console.log(`Running App on port ${port} in ${env} mode`);
+    });
 }
 
 

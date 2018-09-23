@@ -1,6 +1,10 @@
 const Sequelize = require('sequelize');
-module.exports = (dbconfig) => {
-    const { database, username, password } = dbconfig;
+const config = require('./config').db;
+function createNewDbConnection({
+    database,
+    username,
+    password
+}) {
     return new Sequelize(database, username, password, {
         host: 'localhost',
         dialect: 'sqlite',
@@ -16,4 +20,16 @@ module.exports = (dbconfig) => {
         // SQLite only
         storage: 'database.sqlite'
     });
-};
+}
+
+const sequelize = createNewDbConnection(config);
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+    })
+    .catch((err) => {
+        console.error('Unable to connect to the database:', err);
+    });
+
+module.exports = sequelize;
