@@ -11,3 +11,5 @@ const Shop = sequelize.define('shop', {
 });
 Shop.hasMany(Order);
 Shop.hasMany(Product);
+
+module.exports = Shop;
