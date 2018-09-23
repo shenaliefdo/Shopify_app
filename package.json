@@ -1,0 +1,42 @@
+{
+  "name": "shopify_app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "lint-staged": "$(yarn bin)/lint-staged",
+    "start": "node app.js"
+  },
+  "lint-staged": {
+    "application/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "config/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-nodejs": "^0.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.0.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "lint-staged": "^4.2.3",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.7.3"
+  }
+}
