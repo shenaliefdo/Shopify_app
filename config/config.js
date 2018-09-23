@@ -8,7 +8,10 @@ const config = {
         },
         port: process.env.PORT || 3000,
         db: {
-            postgres: ''
+            postgres: '',
+            database: "database",
+            username: "username",
+            password: "password"
         },
         host_url: "http://localhost:3000",
         env

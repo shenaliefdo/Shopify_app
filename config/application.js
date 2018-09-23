@@ -1,22 +1,26 @@
-
-
 const path = require('path');
-const dbStore = require("./db.js");
+const createNewConnection = require("./db.js");
 const appConfig = require('./config');
 const application = require('../application/express.js');
 function start() {
-    const { db, port, env } =appConfig;
-    dbStore.connectDb(db)
+    const {
+        db,
+        port,
+        env
+    } = appConfig;
+    createNewConnection(db)
+        .authenticate()
         .then(() => {
+            console.log('Connection has been established successfully.');
             application.listen(port, (err) => {
                 if (err) {
                     throw new Error(err);
                 }
                 console.log(`Running App on port ${port} in ${env} mode`);
             });
-        }).catch((err) => {
-            console.trace(err);
-            process.exit(1);
+        })
+        .catch((err) => {
+            console.error('Unable to connect to the database:', err);
         });
 }
 
@@ -35,4 +39,6 @@ process.on('rejectionHandled', (reason, p) => {
 });
 
 
-module.exports ={ start };
+module.exports = {
+    start
+};
