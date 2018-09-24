@@ -1,12 +1,10 @@
-const Sequalize = require('sequelize');
-const sequalize = require('../../config/db');
-const lineItems = require('./lineitem');
 
-
-const Order = sequalize.define('order', {
-    total: {
-        type: Sequalize.FLOAT
-    },
-});
-Order.hasMany(lineItems);
-module.exports = Order;
+module.exports = (sequelize, DataTypes) => {
+    const Order = sequelize.define('Order', {
+        total: DataTypes.FLOAT
+    }, {});
+    Order.associate = function (models) {
+    // associations can be defined here
+    };
+    return Order;
+};

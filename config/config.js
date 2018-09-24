@@ -7,13 +7,6 @@ const config = {
             name: 'Shopify_App_Server'
         },
         port: process.env.PORT || 3000,
-        db: {
-            username: "root",
-            password: null,
-            database: "database_development",
-            host: "127.0.0.1",
-            dialect: "sqlite"
-        },
         host_url: "http://localhost:3000",
         env
     },
@@ -23,13 +16,6 @@ const config = {
             name: 'Shopify_App_Server'
         },
         port: process.env.PORT || 3000,
-        db: {
-            username: "root",
-            password: null,
-            database: "database_production",
-            host: "127.0.0.1",
-            dialect: "mysql"
-        },
         host_url: process.env.HOST_URL,
         env
     },

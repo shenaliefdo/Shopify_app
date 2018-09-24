@@ -1,12 +1,11 @@
-const Sequalize = require('sequelize');
-const sequalize = require('../../config/db');
 
-const LineItem = sequalize.define('lineitems', {
-    quantity: {
-        type: Sequalize.INTEGER
-    },
-    total: {
-        type: Sequalize.FLOAT
-    }
-});
-module.exports = LineItem;
+module.exports = (sequelize, DataTypes) => {
+    const lineItem = sequelize.define('lineItem', {
+        quantity: DataTypes.INTEGER,
+        total: DataTypes.FLOAT
+    }, {});
+    lineItem.associate = function (models) {
+    // associations can be defined here
+    };
+    return lineItem;
+};

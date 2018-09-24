@@ -1,5 +1,3 @@
-const path = require('path');
-const createNewConnection = require("./db.js");
 const appConfig = require('./config');
 const application = require('../application/express.js');
 function start() {
