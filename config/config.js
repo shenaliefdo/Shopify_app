@@ -8,10 +8,11 @@ const config = {
         },
         port: process.env.PORT || 3000,
         db: {
-            postgres: '',
-            database: "database",
-            username: "username",
-            password: "password"
+            username: "root",
+            password: null,
+            database: "database_development",
+            host: "127.0.0.1",
+            dialect: "sqlite"
         },
         host_url: "http://localhost:3000",
         env
@@ -23,7 +24,11 @@ const config = {
         },
         port: process.env.PORT || 3000,
         db: {
-            postgres: process.env.DB_ADDRESS,
+            username: "root",
+            password: null,
+            database: "database_production",
+            host: "127.0.0.1",
+            dialect: "mysql"
         },
         host_url: process.env.HOST_URL,
         env

@@ -7,10 +7,14 @@ function index(req, res) {
 }
 
 function create(req, res) {
-
+    const newShop = req.params;
+    Shop.create(newShop).then(({ dataValues }) => res.json(dataValues)).catch(err => res.status(422).json(err));
 }
 function read(req, res) {
-
+    const name = req.params.id;
+    Shop.findOne({
+        name
+    }).then(({ dataValues }) => res.json(dataValues));
 }
 function update(req, res) {
 

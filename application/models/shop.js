@@ -5,8 +5,9 @@ const Product = require('./product');
 
 
 const Shop = sequelize.define('shop', {
-    shopName: {
-        type: Sequelize.STRING
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false,
     },
 });
 Shop.hasMany(Order);
