@@ -1,10 +1,10 @@
 
 module.exports = (sequelize, DataTypes) => {
-    const Order = sequelize.define('Order', {
+    const order = sequelize.define('order', {
         total: DataTypes.FLOAT
     }, {});
-    Order.associate = function (models) {
-    // associations can be defined here
+    order.associate = (models) => {
+        order.belongsTo(models.shop);
     };
-    return Order;
+    return order;
 };

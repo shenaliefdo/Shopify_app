@@ -1,11 +1,10 @@
 
-
 module.exports = (sequelize, DataTypes) => {
     const Shop = sequelize.define('Shop', {
-        name: DataTypes.STRING
+        name: {
+            type: DataTypes.STRING,
+            isRequired: true
+        }
     }, {});
-    // Shop.associate = function (models) {
-    // // associations can be defined here
-    // };
     return Shop;
 };

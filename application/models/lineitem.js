@@ -4,8 +4,9 @@ module.exports = (sequelize, DataTypes) => {
         quantity: DataTypes.INTEGER,
         total: DataTypes.FLOAT
     }, {});
-    lineItem.associate = function (models) {
-    // associations can be defined here
+    lineItem.associate = (models) => {
+        lineItem.belongsTo(models.product);
+        lineItem.belongsTo(models.order);
     };
     return lineItem;
 };

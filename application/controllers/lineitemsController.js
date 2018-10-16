@@ -1,9 +1,9 @@
+const LineItem = require('../models/lineitem');
+const Product = require('../models/product');
 const Order = require('../models/order');
-const Shop = require('../models/shop');
 function index(req, res) {
 
 }
-
 function create(req, res) {
 
 }
