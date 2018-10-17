@@ -1,4 +1,3 @@
-
 const {
     Shop,
     product
@@ -38,18 +37,50 @@ function create(req, res) {
 }
 
 function read(req, res) {
-    const product_name = req.params.product_id;
+    const shop = req.params.id;
+    const productid = req.params.product_id;
     product.findOne({
-        product_name
-    }.then(({ dataValues }) => res.json(dataValues)));
+        where: {
+            shopId: shop,
+            id: productid
+        }
+    }).then((product_data) => {
+        if (product_data === null) {
+            res.json("product doesn't exist");
+        } else {
+            res.json(product_data);
+        }
+    });
 }
 function update(req, res) {
-    const product_name = req.params.product_id;
-    product.findOneAndUpdate({ product_name }).then(({ dataValues }) => res.json(dataValues));
+    const shop = req.params.id;
+    const productid = req.params.product_id;
+    product.update({
+        name: req.body.name,
+        price: req.body.price
+    },
+    {
+        where: {
+            id: productid,
+            shopId: shop
+        }
+    }).then(({
+        dataValues
+    }) => res.json(dataValues));
 }
 function remove(req, res) {
-    const product_name = req.params.product_id;
-    product.findOneAndDelete({ product_name }).then(({ dataValues }) => res.json(dataValues));
+    const shop = req.params.id;
+    const productid = req.params.product_id;
+    product.destroy({
+        where: {
+            shopId: shop,
+            id: productid
+        }
+    }).then(() => {
+        res.send(`product removed from database`);
+    }).catch((e) => {
+        console.log(e);
+    });
 }
 
 module.exports = {

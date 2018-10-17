@@ -16,8 +16,8 @@ router.delete('/shop/:id', ShopController.remove);
 router.get('/shop/:id/products', ProductController.index);
 router.post('/shop/:id/product', ProductController.create);
 router.get('/shop/:id/product/:product_id', ProductController.read);
-router.put('/shop/:id/produce/:product_id', ProductController.update);
-router.delete('/shop/:id/produce/:product_id', ProductController.remove);
+router.put('/shop/:id/product/:product_id', ProductController.update);
+router.delete('/shop/:id/product/:product_id', ProductController.remove);
 
 router.get('', OrderController.index);
 router.post('', OrderController.create);
