@@ -4,7 +4,12 @@ const {
     product
 } = require('../models/index');
 function index(req, res) {
-    product.all().then(data => res.json(data)).catch((err) => {
+    const shop = req.params.id;
+    product.all({
+        where: {
+            shopId: shop
+        }
+    }).then(data => res.json(data)).catch((err) => {
         console.log(err);
         return res.status(422).json(err);
     });
@@ -28,6 +33,7 @@ function create(req, res) {
         res.json(newProduct);
     })).catch((e) => {
         console.log(e);
+        res.send("Shop does not exist");
     });
 }
 
