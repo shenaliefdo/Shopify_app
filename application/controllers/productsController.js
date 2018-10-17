@@ -1,10 +1,10 @@
 
 const {
     Shop,
-    Product
+    product
 } = require('../models/index');
 function index(req, res) {
-    Product.all().then(data => res.json(data)).catch((err) => {
+    product.all().then(data => res.json(data)).catch((err) => {
         console.log(err);
         return res.status(422).json(err);
     });
@@ -12,13 +12,15 @@ function index(req, res) {
 
 function create(req, res) {
     const shop = req.params.id;
-    // const body = req.body;
+    console.log(shop);
+    const b = req.body;
+    console.log(b);
     Shop.findById(
         shop
-    ).then(({ data }) => Product.create({
-        shopId: data.id,
-        name: req.body.name,
-        price: req.body.price
+    ).then(() => product.create({
+        name: b.name,
+        price: b.price,
+        shopId: shop
     }).then(({
         newProduct
     }) => {
@@ -31,17 +33,17 @@ function create(req, res) {
 
 function read(req, res) {
     const product_name = req.params.product_id;
-    Product.findOne({
+    product.findOne({
         product_name
     }.then(({ dataValues }) => res.json(dataValues)));
 }
 function update(req, res) {
     const product_name = req.params.product_id;
-    Product.findOneAndUpdate({ product_name }).then(({ dataValues }) => res.json(dataValues));
+    product.findOneAndUpdate({ product_name }).then(({ dataValues }) => res.json(dataValues));
 }
 function remove(req, res) {
     const product_name = req.params.product_id;
-    Product.findOneAndDelete({ product_name }).then(({ dataValues }) => res.json(dataValues));
+    product.findOneAndDelete({ product_name }).then(({ dataValues }) => res.json(dataValues));
 }
 
 module.exports = {
