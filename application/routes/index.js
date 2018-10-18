@@ -19,11 +19,11 @@ router.get('/shop/:id/product/:product_id', ProductController.read);
 router.put('/shop/:id/product/:product_id', ProductController.update);
 router.delete('/shop/:id/product/:product_id', ProductController.remove);
 
-router.get('', OrderController.index);
-router.post('', OrderController.create);
-router.get('', OrderController.read);
-router.put('', OrderController.update);
-router.delete('', OrderController.remove);
+router.get('/shop/:id/orders', OrderController.index);
+router.post('/shop/:id/order', OrderController.create);
+router.get('/shop/:id/order/:order_id', OrderController.read);
+router.put('/shop/:id/order/:order_id', OrderController.update);
+router.delete('/shop/:id/order/:order_id', OrderController.remove);
 
 router.get('', LineItemController.index);
 router.post('', LineItemController.create);
