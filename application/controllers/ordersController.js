@@ -16,11 +16,14 @@ function index(req, res) {
         } else {
             res.json(o);
         }
+    }).catch((e) => {
+        res.send(e);
     });
 }
 
 function create(req, res) {
     const shop = req.params.id;
+    const total = 0;
     Shop.findById(
         shop
     ).then(() => order.create({

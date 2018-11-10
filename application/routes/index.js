@@ -25,8 +25,8 @@ router.get('/shop/:id/order/:order_id', OrderController.read);
 router.put('/shop/:id/order/:order_id', OrderController.update);
 router.delete('/shop/:id/order/:order_id', OrderController.remove);
 
-router.get('', LineItemController.index);
-router.post('', LineItemController.create);
-router.get('', LineItemController.read);
-router.put('', LineItemController.update);
-router.delete('', LineItemController.remove);
+router.get('/order/:order_id/product/:product_id/lineItems', LineItemController.index);
+router.post('/order/:order_id/product/:product_id/lineItem', LineItemController.create);
+router.get('/order/:order_id/product/:product_id/lineItem/:lineItem_id', LineItemController.read);
+router.put('/order/:order_id/product/:product_id/lineItem/:lineItem_id', LineItemController.update);
+router.delete('/order/:order_id/product/:product_id/lineItem/:lineItem_id', LineItemController.remove);
